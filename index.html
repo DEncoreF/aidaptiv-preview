@@ -731,19 +731,39 @@
             .menu-toggle { display: grid; place-items: center; }
             .header-inner { width: calc(100% - 2.4rem); min-height: 68px; }
 
-            /* Hero */
-            .architecture-band { padding-top: 16px; }
-            .page-header { padding-top: 180px; padding-bottom: 64px; gap: 16px; }
+            /* Hero — fix 1: fixed header 高 68px，band 需留出空間 */
+            .architecture-band { padding-top: 68px; }
+            .page-header { padding-top: 120px; padding-bottom: 64px; gap: 16px; }
             .arch-hero-pretitle { font-size: 0.8rem; }
             .arch-hero-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .arch-hero-ribbon { flex-wrap: wrap; justify-content: center; }
 
             /* Layout grids → single column */
             .pipeline-grid { grid-template-columns: 1fr; }
-            .versus-grid   { grid-template-columns: 1fr; }
             .chart-grid    { grid-template-columns: 1fr; }
             .mech-grid     { grid-template-columns: 1fr; }
-            .vs-divider    { display: none; }
+
+            /* fix 4: versus-grid 單欄時 VS badge 顯示在兩卡之間 */
+            .versus-grid {
+                display: flex; flex-direction: column; gap: 0;
+            }
+            .versus-card.legacy  {
+                order: 1;
+                border-radius: var(--radius-card) var(--radius-card) 0 0;
+                border-bottom: 0;
+            }
+            .versus-card.aidaptiv {
+                order: 3;
+                border-radius: 0 0 var(--radius-card) var(--radius-card);
+            }
+            .vs-divider {
+                order: 2;
+                position: relative; left: auto; top: auto;
+                transform: none;
+                align-self: center;
+                margin: -22px 0;
+                z-index: 2;
+            }
 
             /* Section spacing */
             .section { padding: 56px 0; }
@@ -751,7 +771,14 @@
 
             /* Chart cards */
             .chart-card { padding: 24px 20px; }
-            .bar-chart  { height: 180px; }
+            /* fix 3: bar-chart 高度限制，避免遮字 */
+            .bar-chart  { height: 160px; }
+            .bars       { height: 120px; }
+
+            /* fix 2: TTFT callout 縮小，移至右下角不擋線 */
+            .ttft-callout { padding: 10px 14px; min-width: 110px; right: 8px; bottom: 8px; }
+            .ttft-callout-big { font-size: 0.75rem; }
+            .ttft-callout-sub { font-size: 1.8rem; }
 
             /* Terminal */
             .term-body { padding: 20px 20px; font-size: 0.82rem; }
@@ -764,10 +791,6 @@
             /* Footer */
             .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
             .footer-links { flex-wrap: wrap; gap: 1rem; }
-
-            /* TTFT callout */
-            .ttft-callout { padding: 14px 18px; min-width: 120px; }
-            .ttft-callout-sub { font-size: 2rem; }
         }
 
         /* Mobile: ≤ 600px */
@@ -782,8 +805,9 @@
             .brand-logo { width: 96px; }
             .mobile-menu { top: 64px; left: 12px; right: 12px; }
 
-            /* Hero */
-            .page-header { padding-top: 148px; padding-bottom: 48px; gap: 14px; }
+            /* fix 1: 手機 header 高 64px，band 已補 68px，page-header 只需正常間距 */
+            .architecture-band { padding-top: 64px; }
+            .page-header { padding-top: 80px; padding-bottom: 48px; gap: 14px; }
             .page-title  { font-size: 2.1rem; line-height: 1.02; letter-spacing: -0.04em; }
             .page-sub    { font-size: 0.97rem; }
             .arch-hero-pretitle { font-size: 0.75rem; letter-spacing: 0.1em; }
@@ -807,29 +831,38 @@
             .versus-val.large { font-size: 1.6rem; }
             .rack-art { grid-template-columns: repeat(4, 1fr); gap: 5px; }
 
-            /* Charts */
+            /* fix 3: Charts — bar 高度收緊，不遮文字 */
             .chart-card  { padding: 20px 16px; gap: 16px; }
-            .bar-chart   { height: 140px; gap: 4px; }
-            .bar         { width: 24px; }
-            .bar-fail    { width: 24px; height: 24px; font-size: 0.7rem; }
-            .bar-val     { font-size: 0.68rem; }
-            .bar-group-label { font-size: 0.7rem; }
+            .bar-chart   { height: 120px; gap: 4px; }
+            .bars        { height: 90px; }
+            .bar         { width: 22px; }
+            .bar-fail    { width: 22px; height: 22px; font-size: 0.66rem; }
+            .bar-val     { font-size: 0.66rem; }
+            .bar-group-label { font-size: 0.68rem; }
             .chart-table { font-size: 0.78rem; }
             .chart-table th, .chart-table td { padding: 8px 0; }
             .table-note  { font-size: 0.72rem; }
 
-            /* TTFT chart */
+            /* fix 2: TTFT callout 移至右上角空白區 */
             .ttft-y-labels { width: 28px; padding-right: 6px; }
             .ttft-y-labels span { font-size: 0.62rem; }
             .ttft-y-title-wrap { width: 12px; }
             .ttft-y-title { font-size: 0.62rem; }
             .ttft-x-labels { padding-left: 40px; }
-            .ttft-x-labels span { font-size: 0.58rem; }
+            .ttft-x-labels span { font-size: 0.55rem; }
             .ttft-x-title { font-size: 0.62rem; padding-left: 40px; }
             .ttft-plot    { min-height: 180px; }
-            .ttft-callout { padding: 10px 14px; min-width: 100px; right: 6px; bottom: 6px; border-radius: 10px; }
-            .ttft-callout-big { font-size: 0.72rem; }
-            .ttft-callout-sub { font-size: 1.6rem; }
+            .ttft-callout {
+                padding: 7px 10px;
+                min-width: 0;
+                width: 38%;
+                right: 4px;
+                top: 44%;
+                bottom: auto;
+                border-radius: 8px;
+            }
+            .ttft-callout-big { font-size: 0.62rem; }
+            .ttft-callout-sub { font-size: 1.1rem; margin-top: 1px; }
             .ttft-point   { width: 9px; height: 9px; }
             .legend-item  { font-size: 0.75rem; }
             .legend-dot   { width: 10px; height: 10px; }
