@@ -723,24 +723,150 @@
         #back-to-top svg { width: 18px; height: 18px; }
 
         /* ── Responsive ── */
+
+        /* Tablet: 768px–900px */
         @media (max-width: 900px) {
-            .pipeline-grid { grid-template-columns: 1fr; }
-            .versus-grid { grid-template-columns: 1fr; }
-            .vs-divider { display: none; }
-            .chart-grid { grid-template-columns: 1fr; }
-            .mech-grid { grid-template-columns: 1fr; }
-            .architecture-band { padding-top: 20px; }
-            .page-header { padding-top: 212px; }
-            .arch-hero-ribbon { flex-wrap: wrap; }
-            .arch-hero-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            /* Nav */
             .nav-links, .contact-pill { display: none; }
             .menu-toggle { display: grid; place-items: center; }
-            .cta-inner { padding: 64px 28px; }
+            .header-inner { width: calc(100% - 2.4rem); min-height: 68px; }
+
+            /* Hero */
+            .architecture-band { padding-top: 16px; }
+            .page-header { padding-top: 180px; padding-bottom: 64px; gap: 16px; }
+            .arch-hero-pretitle { font-size: 0.8rem; }
+            .arch-hero-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .arch-hero-ribbon { flex-wrap: wrap; justify-content: center; }
+
+            /* Layout grids → single column */
+            .pipeline-grid { grid-template-columns: 1fr; }
+            .versus-grid   { grid-template-columns: 1fr; }
+            .chart-grid    { grid-template-columns: 1fr; }
+            .mech-grid     { grid-template-columns: 1fr; }
+            .vs-divider    { display: none; }
+
+            /* Section spacing */
+            .section { padding: 56px 0; }
+            .section-title { margin-bottom: 32px; }
+
+            /* Chart cards */
+            .chart-card { padding: 24px 20px; }
+            .bar-chart  { height: 180px; }
+
+            /* Terminal */
+            .term-body { padding: 20px 20px; font-size: 0.82rem; }
+            .term-title { display: none; }
+
+            /* CTA */
+            .cta-banner { border-radius: 20px; margin-bottom: 72px; }
+            .cta-inner  { padding: 64px 24px; }
+
+            /* Footer */
+            .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .footer-links { flex-wrap: wrap; gap: 1rem; }
+
+            /* TTFT callout */
+            .ttft-callout { padding: 14px 18px; min-width: 120px; }
+            .ttft-callout-sub { font-size: 2rem; }
         }
+
+        /* Mobile: ≤ 600px */
         @media (max-width: 600px) {
-            .bar-chart { height: 160px; }
-            .page-title { font-size: 2.4rem; line-height: 1; }
+            /* Token */
+            :root {
+                --page-gutter: 1.1rem;
+                --radius-card: 12px;
+            }
+
+            /* Nav */
+            .brand-logo { width: 96px; }
+            .mobile-menu { top: 64px; left: 12px; right: 12px; }
+
+            /* Hero */
+            .page-header { padding-top: 148px; padding-bottom: 48px; gap: 14px; }
+            .page-title  { font-size: 2.1rem; line-height: 1.02; letter-spacing: -0.04em; }
+            .page-sub    { font-size: 0.97rem; }
+            .arch-hero-pretitle { font-size: 0.75rem; letter-spacing: 0.1em; }
+            .arch-hero-ribbon   { font-size: 0.78rem; padding: 0.6rem 1rem; }
+            .arch-hero-kpis     { grid-template-columns: 1fr 1fr; border-radius: 14px; }
+            .arch-hero-kpis span { font-size: 0.72rem; min-height: 48px; padding: 6px 10px; letter-spacing: 0.08em; }
+
+            /* Section */
+            .section { padding: 44px 0; }
+            .section-title { font-size: 1.5rem; margin-bottom: 24px; }
+            .section-eyebrow { font-size: 0.66rem; margin-bottom: 10px; }
+
+            /* Pipeline cards */
+            .pipeline-card { padding: 22px 18px; }
+            .pipeline-title { font-size: 1.15rem; }
+            .pipeline-desc  { font-size: 0.88rem; }
+
+            /* Versus cards */
+            .versus-card { padding: 24px 20px; gap: 20px; }
+            .versus-name { font-size: 1.2rem; }
+            .versus-val.large { font-size: 1.6rem; }
+            .rack-art { grid-template-columns: repeat(4, 1fr); gap: 5px; }
+
+            /* Charts */
+            .chart-card  { padding: 20px 16px; gap: 16px; }
+            .bar-chart   { height: 140px; gap: 4px; }
+            .bar         { width: 24px; }
+            .bar-fail    { width: 24px; height: 24px; font-size: 0.7rem; }
+            .bar-val     { font-size: 0.68rem; }
+            .bar-group-label { font-size: 0.7rem; }
+            .chart-table { font-size: 0.78rem; }
+            .chart-table th, .chart-table td { padding: 8px 0; }
+            .table-note  { font-size: 0.72rem; }
+
+            /* TTFT chart */
+            .ttft-y-labels { width: 28px; padding-right: 6px; }
+            .ttft-y-labels span { font-size: 0.62rem; }
+            .ttft-y-title-wrap { width: 12px; }
+            .ttft-y-title { font-size: 0.62rem; }
+            .ttft-x-labels { padding-left: 40px; }
+            .ttft-x-labels span { font-size: 0.58rem; }
+            .ttft-x-title { font-size: 0.62rem; padding-left: 40px; }
+            .ttft-plot    { min-height: 180px; }
+            .ttft-callout { padding: 10px 14px; min-width: 100px; right: 6px; bottom: 6px; border-radius: 10px; }
+            .ttft-callout-big { font-size: 0.72rem; }
+            .ttft-callout-sub { font-size: 1.6rem; }
+            .ttft-point   { width: 9px; height: 9px; }
+            .legend-item  { font-size: 0.75rem; }
+            .legend-dot   { width: 10px; height: 10px; }
+
+            /* Mechanism cards */
+            .mech-card  { padding: 22px 18px; }
+            .mech-title { font-size: 0.97rem; }
+            .mech-desc  { font-size: 0.84rem; }
+            .mech-icon  { width: 40px; height: 40px; font-size: 0.72rem; margin-bottom: 14px; }
+
+            /* Terminal */
+            .term-body  { padding: 16px 14px; font-size: 0.75rem; line-height: 1.85; }
+            .term-header { padding: 10px 14px; }
+            .t-line     { white-space: normal; width: auto !important; overflow: visible; animation: none; }
+
+            /* CTA */
+            .cta-banner { border-radius: 14px; margin-bottom: 48px; }
+            .cta-inner  { padding: 48px 20px; }
+            .solution-btn { min-height: 50px; border-radius: 12px; }
+
+            /* Footer */
+            .footer-inner { gap: 12px; }
+            .footer-copy  { font-size: 0.76rem; order: 3; }
+            .footer-links { order: 2; }
+            .brand-logo.footer { width: 76px; }
+
+            /* Back to top */
+            #back-to-top { bottom: 18px; right: 18px; width: 36px; height: 36px; }
+        }
+
+        /* Very small: ≤ 380px */
+        @media (max-width: 380px) {
+            .page-title { font-size: 1.8rem; }
             .arch-hero-kpis { grid-template-columns: 1fr; }
+            .arch-hero-kpis span + span { box-shadow: inset 0 1px 0 rgba(255,255,255,0.12); }
+            .ttft-x-labels span { font-size: 0.5rem; }
+            .bar { width: 20px; }
         }
     </style>
 </head>
